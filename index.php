@@ -1,17 +1,16 @@
 <?php
-$bip = "192.168.0.255";			// Default Broadcast IP
-
+$broadcast_ip = "192.168.0.255";
 $mac = FALSE;
 if (isset($_GET["MAC"])) {
   $mac = $_GET["MAC"];
 }
-if (isset($_GET["BIP"])) {
-  $bip = $_GET["BIP"];			// Broadcast IP
+if (isset($_GET["B"])) {
+  $broadcast_ip = $_GET["B"];
 }
 
 if ($mac !== FALSE) {
-  WakeuopOnLan($bip, $mac);
-  echo "Info: Send Magic Packet to $mac via $bip";
+  WakeuopOnLan($broadcast_ip, $mac);
+  echo "Info: Send Magic Packet to $mac [$broadcast_ip]";
 } else {
   echo "Error: MAC Address not found";
 }
